@@ -1,5 +1,6 @@
 # Linear-Delta-Robot
 
+This is 2026 Graduation Project mainly focused on implementing simuation and control of the Linear Delta Robot. note that gazebo doesn't have self-collision enabled, you will need to switch the physics engine which will require other modifications but due to lack of time, I kept it as its.
 
 This is the overall sequence of ROS2 processes (topics, nodes, services) on Simulation and Hardware side
 ![Main Window](images/ROS2_overview.jpeg)
