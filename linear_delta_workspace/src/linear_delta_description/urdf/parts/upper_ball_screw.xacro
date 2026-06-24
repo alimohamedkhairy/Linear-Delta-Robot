@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:macro name="upper_ball_screw" params="id">
+
+    <link name="upper_ball_screw_${id}_0_link">
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/ball_screw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_13"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/ball_screw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${ball_screw_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <link name="upper_ball_screw_${id}_1_link">
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/ball_screw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_13"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/ball_screw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${ball_screw_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="dynamic_stabilizer_${id}_to_upper_ball_screw_${id}_0_joint" type="fixed">
+        <origin xyz="${-upper_ball_screw_x} ${-upper_ball_screw_y} ${-upper_ball_screw_z}" rpy="0.0 ${upper_ball_screw_yaw} ${pi/2}"/>
+        <parent link="dynamic_stabilizer_${id}_link"/>
+        <child link="upper_ball_screw_${id}_0_link"/>
+    </joint>
+
+    <joint name="dynamic_stabilizer_${id}_to_upper_ball_screw_${id}_1_joint" type="fixed">
+        <origin xyz="${-upper_ball_screw_x + 0.066} ${-upper_ball_screw_y} ${-upper_ball_screw_z}" rpy="0.0 ${upper_ball_screw_yaw} ${pi/2}"/>
+        <parent link="dynamic_stabilizer_${id}_link"/>
+        <child link="upper_ball_screw_${id}_1_link"/>
+    </joint>
+
+    <gazebo reference="dynamic_stabilizer_${id}_to_upper_ball_screw_${id}_0_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="dynamic_stabilizer_${id}_to_upper_ball_screw_${id}_1_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+</xacro:macro>
+
+</robot>

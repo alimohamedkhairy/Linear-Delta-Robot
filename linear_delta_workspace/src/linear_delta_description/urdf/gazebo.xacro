@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo>
+
+        <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+            
+            <parent_link>lower_ball_screw_0_1_link</parent_link>
+            <child_link>end_effector_link</child_link>
+            <child_model>linear</child_model>
+            <topic>/world/default/model/linear/joint_state</topic>
+
+        </plugin>
+
+        <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+            
+            <parent_link>lower_ball_screw_1_0_link</parent_link>
+            <child_link>end_effector_link</child_link>
+            <child_model>linear</child_model>
+            <topic>/world/default/model/linear/joint_state</topic>
+
+        </plugin>
+
+        <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+            
+            <parent_link>lower_ball_screw_1_1_link</parent_link>
+            <child_link>end_effector_link</child_link>
+            <child_model>linear</child_model>
+            <topic>/world/default/model/linear/joint_state</topic>
+
+        </plugin>
+
+        <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+            
+            <parent_link>lower_ball_screw_2_0_link</parent_link>
+            <child_link>end_effector_link</child_link>
+            <child_model>linear</child_model>
+            <topic>/world/default/model/linear/joint_state</topic>
+
+        </plugin>
+
+        <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+            
+            <parent_link>lower_ball_screw_2_1_link</parent_link>
+            <child_link>end_effector_link</child_link>
+            <child_model>linear</child_model>
+            <topic>/world/default/model/linear/joint_state</topic>
+
+        </plugin>
+
+        <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+
+            <topic>/world/default/model/linear/joint_state</topic>
+
+            <joint_name>dynamic_stabilizer_0_to_upper_ball_screw_0_0_joint</joint_name>
+            <joint_name>dynamic_stabilizer_0_to_upper_ball_screw_0_1_joint</joint_name>
+            <joint_name>dynamic_stabilizer_1_to_upper_ball_screw_1_0_joint</joint_name>
+            <joint_name>dynamic_stabilizer_1_to_upper_ball_screw_1_1_joint</joint_name>
+            <joint_name>dynamic_stabilizer_2_to_upper_ball_screw_2_0_joint</joint_name>
+            <joint_name>dynamic_stabilizer_2_to_upper_ball_screw_2_1_joint</joint_name>
+
+            <joint_name>upper_ball_screw_0_to_upper_virtual_0_0_0_joint</joint_name>
+            <joint_name>upper_ball_screw_0_to_upper_virtual_0_0_1_joint</joint_name>
+            <joint_name>upper_virtual_0_0_to_upper_virtual_0_1_0_joint</joint_name>
+            <joint_name>upper_virtual_0_0_to_upper_virtual_0_1_1_joint</joint_name>
+            <joint_name>upper_virtual_0_1_to_connector_0_0_link_joint</joint_name>
+            <joint_name>upper_virtual_0_1_to_connector_0_1_link_joint</joint_name>
+            <joint_name>upper_ball_screw_1_to_upper_virtual_1_0_0_joint</joint_name>
+            <joint_name>upper_ball_screw_1_to_upper_virtual_1_0_1_joint</joint_name>
+            <joint_name>upper_virtual_1_0_to_upper_virtual_1_1_0_joint</joint_name>
+            <joint_name>upper_virtual_1_0_to_upper_virtual_1_1_1_joint</joint_name>
+            <joint_name>upper_virtual_1_1_to_connector_1_0_link_joint</joint_name>
+            <joint_name>upper_virtual_1_1_to_connector_1_1_link_joint</joint_name>
+            <joint_name>upper_ball_screw_2_to_upper_virtual_2_0_0_joint</joint_name>
+            <joint_name>upper_ball_screw_2_to_upper_virtual_2_0_1_joint</joint_name>
+            <joint_name>upper_virtual_2_0_to_upper_virtual_2_1_0_joint</joint_name>
+            <joint_name>upper_virtual_2_0_to_upper_virtual_2_1_1_joint</joint_name>
+            <joint_name>upper_virtual_2_1_to_connector_2_0_link_joint</joint_name>
+            <joint_name>upper_virtual_2_1_to_connector_2_1_link_joint</joint_name>
+
+            <joint_name>connector_0_0_link_to_lower_virtual_0_0_0_joint</joint_name>
+            <joint_name>connector_0_1_link_to_lower_virtual_0_0_1_joint</joint_name>
+            <joint_name>lower_virtual_0_0_0_to_lower_virtual_0_1_0_joint</joint_name>
+            <joint_name>lower_virtual_0_0_1_to_lower_virtual_0_1_1_joint</joint_name>
+            <joint_name>lower_virtual_0_1_0_to_lower_virtual_0_2_0_joint</joint_name>
+            <joint_name>lower_virtual_0_1_1_to_lower_virtual_0_2_1_joint</joint_name>
+
+            <joint_name>connector_1_0_link_to_lower_virtual_1_0_0_joint</joint_name>
+            <joint_name>connector_1_1_link_to_lower_virtual_1_0_1_joint</joint_name>
+            <joint_name>lower_virtual_1_0_0_to_lower_virtual_1_1_0_joint</joint_name>
+            <joint_name>lower_virtual_1_0_1_to_lower_virtual_1_1_1_joint</joint_name>
+            <joint_name>lower_virtual_1_1_0_to_lower_virtual_1_2_0_joint</joint_name>
+            <joint_name>lower_virtual_1_1_1_to_lower_virtual_1_2_1_joint</joint_name>
+
+            <joint_name>connector_2_0_link_to_lower_virtual_2_0_0_joint</joint_name>
+            <joint_name>connector_2_1_link_to_lower_virtual_2_0_1_joint</joint_name>
+            <joint_name>lower_virtual_2_0_0_to_lower_virtual_2_1_0_joint</joint_name>
+            <joint_name>lower_virtual_2_0_1_to_lower_virtual_2_1_1_joint</joint_name>
+            <joint_name>lower_virtual_2_1_0_to_lower_virtual_2_2_0_joint</joint_name>
+            <joint_name>lower_virtual_2_1_1_to_lower_virtual_2_2_1_joint</joint_name>
+
+        </plugin>
+
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find linear_delta_control)/config/sim_linear_delta_controller_manager.yaml</parameters>
+            <ros>
+                <namespace>sim</namespace>
+            </ros>
+        </plugin>
+
+    </gazebo>
+
+</robot>

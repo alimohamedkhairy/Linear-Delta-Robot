@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:macro name="lower_stabilizer" params="id x y yaw">
+    
+    <link name="lower_stabilizer_cover_${id}_link">
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi} 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/lower_stabilizer_cover.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_3"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi} 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/lower_stabilizer_cover.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${lower_stabilizer_cover_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <link name="lower_stabilizer_${id}_link">
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/lower_stabilizer.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_2"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/lower_stabilizer.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${lower_stabilizer_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+
+    </link>
+
+    <joint name="base_to_lower_stabilizer_cover_${id}_joint" type="fixed">
+        <origin xyz="${x} ${y} ${lower_stabilizer_z}" rpy="0.0 0.0 ${yaw}"/>
+        <parent link="base_link"/>
+        <child link="lower_stabilizer_cover_${id}_link"/>
+    </joint>
+
+    <joint name="lower_stabilizer_cover_to_lower_stabilizer_${id}_joint" type="fixed">
+        <origin xyz="0.0 ${-lower_stabilizer_cover_y} ${-lower_stabilizer_cover_z}" rpy="0.0 0.0 ${pi}"/>
+        <parent link="lower_stabilizer_cover_${id}_link"/>
+        <child link="lower_stabilizer_${id}_link"/>
+    </joint>
+
+</xacro:macro>
+
+</robot>

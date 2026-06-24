@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:macro name="rod" params="id">
+    
+    <link name="rod_${id}_link">
+            
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_10"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${rod_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="lower_stabilizer_to_rod_${id}_joint" type="fixed">
+        <origin xyz="0.0 0.0 ${rod_z}" rpy="0.0 0.0 0.0"/>
+        <parent link="lower_stabilizer_${id}_link"/>
+        <child link="rod_${id}_link"/>
+    </joint>
+
+    <gazebo reference="lower_stabilizer_to_rod_${id}_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <link name="rod_stand_${id}_0_link">
+            
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod_stand.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_11"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod_stand.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${rod_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <link name="rod_stand_${id}_1_link">
+            
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod_stand.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="color_11"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://linear_delta_description/meshes/rod_stand.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${rod_mass}"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="rod_${id}_to_rod_stand_${id}_joint" type="fixed">
+        <origin xyz="${rod_stand_x} 0.0 ${-rod_stand_z}" rpy="0.0 0.0 0.0"/>
+        <parent link="rod_${id}_link"/>
+        <child link="rod_stand_${id}_0_link"/>
+    </joint>
+
+    <joint name="rod_${id}_to_rod_stand_${id}_1_joint" type="fixed">
+        <origin xyz="${-rod_stand_x} 0.0 ${-rod_stand_z}" rpy="0.0 0.0 0.0"/>
+        <parent link="rod_${id}_link"/>
+        <child link="rod_stand_${id}_1_link"/>
+    </joint>
+
+</xacro:macro>
+
+</robot>

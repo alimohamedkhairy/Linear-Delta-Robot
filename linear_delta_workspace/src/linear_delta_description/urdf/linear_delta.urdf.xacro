@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="linear_delta_robot">
+
+<xacro:property name="color0" value="0.0 0.0 1.0 1.0" /> <!-- Base and Top -->
+<xacro:property name="color1" value="0.0 0.4 0.6 1.0" /> <!-- Heatbed -->
+<xacro:property name="color2" value="1.0 0.0 0.0 1.0" /> <!-- Lower Stabilizer -->
+<xacro:property name="color3" value="1.0 0.0 0.0 1.0" /> <!-- Lower Stabilizer Cover -->
+<xacro:property name="color4" value="1.0 0.0 0.0 1.0" /> <!-- upper Stabilizer -->
+<xacro:property name="color5" value="0.5 0.0 0.2 1.0" /> <!-- Limit Switch-->
+<xacro:property name="color6" value="0.0 0.4 0.6 1.0" /> <!-- Stepper Support -->
+<xacro:property name="color7" value="0.2 0.2 0.2 1.0" /> <!-- Stepper Motor -->
+<xacro:property name="color8" value="0.1 0.1 0.1 1.0" /> <!-- Stepper Rotary -->
+<xacro:property name="color9" value="0.0 0.2 0.3 1.0" /> <!-- Heatbed Spring -->
+<xacro:property name="color10" value="0.1 0.1 0.1 1.0" />  <!-- Rod -->
+<xacro:property name="color11" value="0.2 0.2 0.2 1.0" />  <!-- Rod Stand -->
+<xacro:property name="color12" value="1.0 0.0 1.0 1.0" />  <!-- Dynamic Stabilizer -->
+<xacro:property name="color13" value="0.1 0.1 0.1 1.0" />  <!-- Upper Ball Screw -->
+<xacro:property name="color14" value="1.0 0.5 0.0 1.0" />  <!-- Connector -->
+<xacro:property name="color15" value="0.1 0.1 0.1 1.0" />  <!-- Lower Ball Screw -->
+<xacro:property name="color16" value="0.0 1.0 0.0 1.0" />  <!-- End Effector -->
+
+<xacro:property name="base_z" value="0.12" />
+<xacro:property name="heatbed_z" value="0.02" />
+<xacro:property name="top_z" value="${upper_stabilizer_z - 0.02}" />
+
+<xacro:property name="lower_stabilizer_x" value="0.1595" />
+<xacro:property name="lower_stabilizer_y" value="0.092" />
+<xacro:property name="lower_stabilizer_z" value="0.0085" />
+<xacro:property name="lower_stabilizer_cover_y" value="0.0021" />
+<xacro:property name="lower_stabilizer_cover_z" value="0.0245" />
+
+<xacro:property name="upper_stabilizer_z" value="0.7" />
+<xacro:property name="limit_switch_x" value="0.015573" />
+<xacro:property name="limit_switch_y" value="0.002375" />
+<xacro:property name="limit_switch_z" value="0.023446" />
+
+<xacro:property name="stepper_motor_support_y" value="0.0423" />
+<xacro:property name="stepper_motor_support_z" value="0.02" />
+<xacro:property name="stepper_motor_y" value="0.013" />
+<xacro:property name="stepper_motor_z" value="0.018" />
+<xacro:property name="stepper_motor_rotary_y" value="0.045" />
+
+<xacro:property name="heatbed_spring_side" value="0.0993" />
+<xacro:property name="heatbed_spring_z" value="0.006" />
+
+<xacro:property name="rod_z" value="0.3" />
+<xacro:property name="rod_stand_x" value="0.033" />
+<xacro:property name="rod_stand_z" value="0.4" />
+
+<xacro:property name="dynamic_stabilizer_x" value="-0.0004" />
+<xacro:property name="dynamic_stabilizer_y" value="-0.013" />
+
+<xacro:property name="upper_ball_screw_x" value="0.03265" />
+<xacro:property name="upper_ball_screw_y" value="0.0096" />
+<xacro:property name="upper_ball_screw_z" value="0.01" />
+<xacro:property name="upper_ball_screw_yaw" value="0.5" />
+
+<xacro:property name="connector_x" value="0.003" />
+<xacro:property name="connector_y" value="0.0" />
+<xacro:property name="connector_z" value="-0.1118" />
+
+<xacro:property name="lower_ball_screw_x" value="0.0035" />
+<xacro:property name="lower_ball_screw_z" value="0.225" />
+
+<xacro:property name="end_effector_x" value="0.057" />
+<xacro:property name="end_effector_y" value="0.0331" />
+<xacro:property name="end_effector_z" value="0.0102" />
+
+<xacro:property name="base_mass" value="10.0" /> 
+<xacro:property name="heatbed_mass" value="0.3" />
+<xacro:property name="lower_stabilizer_cover_mass" value="0.09" />
+<xacro:property name="lower_stabilizer_mass" value="0.1" />
+<xacro:property name="upper_stabilizer_mass" value="0.1" />
+<xacro:property name="limit_switch_mass" value="0.1" />
+<xacro:property name="rod_mass" value="0.1" />
+<xacro:property name="dynamic_stabilizer_mass" value="0.2" />
+<xacro:property name="ball_screw_mass" value="0.05" />
+<xacro:property name="connector_mass" value="0.05" />
+<xacro:property name="end_effector_mass" value="0.2" />
+
+<xacro:include filename="$(find linear_delta_description)/urdf/colors.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/base.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/lower_stabilizer.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/upper_stabilizer.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/stepper_motor.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/heatbed_spring.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/rod.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/dynamic_stabilizer.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/upper_ball_screw.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/connector.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/lower_ball_screw.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/parts/end_effector.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/linear_delta_core.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/gazebo.xacro"/>
+<xacro:include filename="$(find linear_delta_description)/urdf/linear_delta.ros2_control.xacro"/>
+
+</robot>

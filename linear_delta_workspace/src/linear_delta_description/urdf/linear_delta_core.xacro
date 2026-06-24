@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:base/>
+
+<xacro:lower_stabilizer id="0" x="${lower_stabilizer_x}" y="${-lower_stabilizer_y}" yaw="${pi/3}"/>
+<xacro:lower_stabilizer id="1" x="${-lower_stabilizer_x}" y="${-lower_stabilizer_y}" yaw="${-pi/3}"/>
+<xacro:lower_stabilizer id="2" x="0.0" y="${lower_stabilizer_x * sin(pi/3) + lower_stabilizer_y * cos(pi/3)}" yaw="${pi}"/>
+
+<xacro:upper_stabilizer id="0"/>
+<xacro:upper_stabilizer id="1"/>
+<xacro:upper_stabilizer id="2"/>
+
+<xacro:stepper_motor id="0"/>
+<xacro:stepper_motor id="1"/>
+<xacro:stepper_motor id="2"/>
+
+<xacro:heatbed_spring id="0" x="${-heatbed_spring_side}" y="${-heatbed_spring_side}"/>
+<xacro:heatbed_spring id="1" x="${heatbed_spring_side}" y="${-heatbed_spring_side}"/>
+<xacro:heatbed_spring id="2" x="${-heatbed_spring_side}" y="${heatbed_spring_side}"/>
+<xacro:heatbed_spring id="3" x="${heatbed_spring_side}" y="${heatbed_spring_side}"/>
+
+<xacro:rod id="0"/>
+<xacro:rod id="1"/>
+<xacro:rod id="2"/>
+
+<xacro:dynamic_stabilizer id="0"/>
+<xacro:dynamic_stabilizer id="1"/>
+<xacro:dynamic_stabilizer id="2"/>
+
+<xacro:upper_ball_screw id="0"/>
+<xacro:upper_ball_screw id="1"/>
+<xacro:upper_ball_screw id="2"/>
+
+<xacro:connector id="0"/>
+<xacro:connector id="1"/>
+<xacro:connector id="2"/>
+
+<xacro:lower_ball_screw id="0"/>
+<xacro:lower_ball_screw id="1"/>
+<xacro:lower_ball_screw id="2"/>
+
+<xacro:end_effector/>
+
+</robot>

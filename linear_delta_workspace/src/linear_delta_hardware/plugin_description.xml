@@ -1,0 +1,9 @@
+<library path="linear_delta_hardware">
+  <class name="linear_delta_hardware/LinearDeltaHardwarePlugin"
+         type="LinearDeltaHardwarePlugin"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Linear delta hardware interface plugin
+    </description>
+  </class>
+</library>

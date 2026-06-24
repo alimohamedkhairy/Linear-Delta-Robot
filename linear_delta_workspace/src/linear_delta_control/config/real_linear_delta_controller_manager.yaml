@@ -1,0 +1,26 @@
+real/controller_manager:
+  ros__parameters:
+    update_rate: 50
+
+    joint_trajectory_controller:
+      type: "joint_trajectory_controller/JointTrajectoryController"
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+real/joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - rod_0_to_dynamic_stabilizer_0_joint
+      - rod_1_to_dynamic_stabilizer_1_joint
+      - rod_2_to_dynamic_stabilizer_2_joint
+      - extrusion_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false

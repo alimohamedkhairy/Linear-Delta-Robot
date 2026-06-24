@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<material name="color_0">
+    <color rgba="${color0}"/>
+</material>
+
+<material name="color_1">
+    <color rgba="${color1}"/>
+</material>
+
+<material name="color_2">
+    <color rgba="${color2}"/>
+</material>
+
+<material name="color_3">
+    <color rgba="${color3}"/>
+</material>
+
+<material name="color_4">
+    <color rgba="${color4}"/>
+</material>
+
+<material name="color_5">
+    <color rgba="${color5}"/>
+</material>
+
+<material name="color_6">
+    <color rgba="${color6}"/>
+</material>
+
+<material name="color_7">
+    <color rgba="${color7}"/>
+</material>
+
+<material name="color_8">
+    <color rgba="${color8}"/>
+</material>
+
+<material name="color_9">
+    <color rgba="${color9}"/>
+</material>
+
+<material name="color_10">
+    <color rgba="${color10}"/>
+</material>
+
+<material name="color_11">
+    <color rgba="${color11}"/>
+</material>
+
+<material name="color_12">
+    <color rgba="${color12}"/>
+</material>
+
+<material name="color_13">
+    <color rgba="${color13}"/>
+</material>
+
+<material name="color_14">
+    <color rgba="${color14}"/>
+</material>
+
+<material name="color_15">
+    <color rgba="${color15}"/>
+</material>
+
+<material name="color_16">
+    <color rgba="${color16}"/>
+</material>
+
+</robot>
